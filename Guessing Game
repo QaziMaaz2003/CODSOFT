@@ -1,0 +1,69 @@
+#include<iostream>
+#include<time.h>
+using namespace std;
+void guess(){
+	int arr[10]={0,1,2,3,4,5,6,7,8,9};
+	int num1;
+	
+	for(int i=0;i<3;i++){
+		cout <<"\nGuess the number between (0-9):";
+		cin >> num1;
+		int res = (rand() % 9) + 1;
+		cout <<"Number generated:" << res;
+		if(num1 > res){
+			cout << "\nYour guessed number is higher than the generated number.\n";
+		}
+		else if(num1 < res){
+			cout << "\nYour guessed number is lower than the generated number.\n";
+		}
+		else{
+			cout << "\nYour number matched, You won.\n";
+		}
+	}
+	
+}
+int main(){
+	srand(time(NULL));
+	int choice,opt;
+	string name;
+	cout << "\t\t\t\t---------------------Guessing Game---------------------------\n\n";
+	cout <<"RULES:\n";
+	cout << "In this game you are given 3 chances to guess a correct number between (0-9). \n";
+	cout << "If your guessed number matches the number generated, then you will be able to win.\n";
+	cout << "To continue ahead enter '1' or to exit enter '2':";
+	cin >> choice;
+	
+	while(choice!=1 && choice!=2){
+					cout << "Invalid Option,Choose the correct option:";
+					cin >> choice;
+				} 
+	system("pause");
+	system("cls");
+	switch(choice){
+		case 1:
+			cout << "Enter your name:";
+			cin >> name;
+			cout << "Hey " << name;
+			guess();
+			for(;;){
+				cout << "\nDo Want to play again?\n";
+				cout << "If yes enter '1' else enter '2':";
+				cin >> opt;
+				while(opt!=1 && opt!=2){
+					cout << "Invalid Option,Choose the correct option:";
+					cin >> opt;
+				} 
+				if(opt==1){
+					guess();
+				}
+				else if(opt==2){
+					exit(1);
+				}
+			}
+			
+		case 2:
+			exit(1);
+	}
+
+return 0;
+}
